@@ -1,0 +1,50 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F011.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Yo, laugh at me, laugh all you like, but why does this happen the very night she comes back? She goes to sleep in his room and his memorial breaks in pieces. Look at it, Joe, look!",
+  "output": "Spoken text: Yo, laugh at me, laugh all you like, but why does this happen the very night she comes back? She goes to sleep in his room and his memorial breaks in pieces. Look at it, Joe, look!"
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M001.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Well, uh, you grew up next door to the girl. Why wouldn't you want to see her?",
+  "output": "The speaker is happy about something related to growing up next door to a girl, but it is not explicitly stated in the speech."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M015.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "What does that mean? Me above all? Huh? What does that mean?",
+  "output": "The speaker is angry about something, but it's not clear what exactly they are angry about from the given speech content."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F006.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Then why is she still single? New York is full of men. Probably a hundred people told her she's crazy, but she's waited.",
+  "output": "Spoken text: Then why is she still single? New York is full of men. Probably a hundred people told her she's crazy, but she's waited."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F007.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Because she knows what I know, that's why. She's faithful as a rock. In my darkest moments, I think of her waiting. And I know that I'm right.",
+  "output": "The speaker is expressing sadness."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M016.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Look at you. You're shaking.",
+  "output": "The speaker is angry, but it is not clear why or what caused it."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M000.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Well, maybe you wanted to see her.",
+  "output": "Spoken text: Well, maybe you wanted to see her."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "The speaker is expressing frustration or annoyance about being told to stand in a certain line for registration despite their previous conversation with someone else who said something different."
+ }
+]

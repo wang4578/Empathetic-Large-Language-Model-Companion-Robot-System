@@ -1,0 +1,26 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you feel like you're being pushed into a specific line without any explanation or clarification. Have you considered asking for more information about why you need to be in that particular line? It might help alleviate some of your confusion."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from a supervisor or manager?"
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you feel like you're being pushed into a specific line without any explanation or clarification. Have you tried asking for more details about why you need to be in that line? Maybe there is a valid reason behind it that you haven't considered yet. It's important to stay calm and patient while navigating these types of situations so that you don't miss out on anything important."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from a supervisor or manager?"
+ }
+]

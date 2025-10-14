@@ -1,0 +1,14 @@
+[
+ {
+  "audio_id": "/tmp/gradio/61b0847f9fb369bda5ed092da260a1325da31247aa3d73e242b7e31a64340bc9/Ses02F_impro03_F021.wav",
+  "instruction": "You are an emotional dialogue robot.  Please respond with calmness and empathy based on this information and the dialogue content to help them soothe their feelings.",
+  "input": "Yeah, I don't know. I don't know. I can't even...the whole idea of like living...spending my whole life with somebody. It's just crazy.",
+  "output": "I understand how you feel. It's a big decision to spend your whole life with someone. You might be feeling overwhelmed by the thought of it all. Take some time to think about what is important to you in a relationship before making any decisions."
+ },
+ {
+  "audio_id": "/tmp/gradio/a739014210116f280e4d1a44ed2bcd89ea2b05eaaa940ff6cfaea6c6d81a11be/Ses02F_impro03_F023.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content, maintaining a calm and objective demeanor.",
+  "input": "Thank you so much.",
+  "output": "I'm glad to hear that you appreciate what someone did for you. It sounds like they went out of their way to help you, which is very kind of them. Thank you for letting me know. I hope everything works out well for you."
+ }
+]

@@ -1,0 +1,95 @@
+{
+    "os": "Linux-4.15.0-213-generic-x86_64-with-glibc2.27",
+    "python": "3.10.15",
+    "heartbeatAt": "2025-04-11T13:46:00.520767",
+    "startedAt": "2025-04-11T13:45:58.867091",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--base_model",
+        "../../../pretrained_mdls/ltuas_long_noqa_a6.bin",
+        "--data_path",
+        "/root/ltu-main/ltu-main/openasqa/data/meld_data.json",
+        "--output_dir",
+        "../exp/ltuas_ft_meld/",
+        "--batch_size",
+        "64",
+        "--micro_batch_size",
+        "1",
+        "--num_epochs",
+        "1",
+        "--learning_rate",
+        "2e-4",
+        "--cutoff_len",
+        "100",
+        "--val_set_size",
+        "0",
+        "--lora_r",
+        "8",
+        "--lora_alpha",
+        "16",
+        "--lora_dropout",
+        "0.05",
+        "--lora_target_modules",
+        "[q_proj,v_proj]",
+        "--group_by_length",
+        "--wandb_run_name",
+        "../exp/ltuas_ft_meld/",
+        "--save_steps",
+        "30",
+        "--trainable_params",
+        "all"
+    ],
+    "state": "running",
+    "program": "/root/ltu-main/ltu-main/src/ltu_as/train_scripts/../finetune_low_resource.py",
+    "codePathLocal": null,
+    "host": "ubuntu",
+    "username": "root",
+    "executable": "/root/anaconda3/envs/venv_ltu/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 2294.598,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2294.598,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2294.598,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2294.598,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2294.598,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 499.9882621765137,
+            "used": 333.2399787902832
+        }
+    },
+    "gpu": "NVIDIA A100-PCIE-40GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 19.60204315185547
+    }
+}

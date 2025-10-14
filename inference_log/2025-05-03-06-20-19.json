@@ -1,0 +1,38 @@
+[
+ {
+  "audio_id": "/tmp/gradio/1ad172e463b43dece8c5e03b8e2a40c9a741994c3687a93713cb779c80d34af1/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "A stranger complimented my hat on the subway. Such a tiny thing, but it felt so nice.",
+  "output": "The speaker's tone suggests that they are sharing a personal experience or story with someone else."
+ },
+ {
+  "audio_id": "/tmp/gradio/9c1767ba8438a7baab6dcb31109628458dd7daa682033da1c2361772537ecd32/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I didn't do well on the last exam, and now I feel completely lost.",
+  "output": "As a language model AI, my response would be to offer words of encouragement or advice for the person feeling lost after not doing well on their exam."
+ },
+ {
+  "audio_id": "/tmp/gradio/9c1767ba8438a7baab6dcb31109628458dd7daa682033da1c2361772537ecd32/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I didn't do well on the last exam, and now I feel completely lost.",
+  "output": "As a language model AI, my response would be to offer words of encouragement or advice for the person feeling lost after not doing well on their exam."
+ },
+ {
+  "audio_id": "/tmp/gradio/9c1767ba8438a7baab6dcb31109628458dd7daa682033da1c2361772537ecd32/audio.wav",
+  "instruction": "",
+  "input": "I didn't do well on the last exam, and now I feel completely lost.",
+  "output": "Labels: Human voice; Speech; Male speech and man speaking; Singing"
+ },
+ {
+  "audio_id": "/tmp/gradio/9c1767ba8438a7baab6dcb31109628458dd7daa682033da1c2361772537ecd32/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I didn't do well on the last exam, and now I feel completely lost.",
+  "output": "As a language model AI, my response would be to offer words of encouragement or advice for the speaker, such as suggesting they seek help from their professor or peers, or reminding them that it is not too late to improve their performance in the coursework. Additionally, I could also suggest alternative ways to cope with stress and anxiety related to academic performance, such as mindfulness exercises or seeking professional counseling if needed."
+ },
+ {
+  "audio_id": "/tmp/gradio/bcfe5f51ee1da6f5ae23ff98e73cc9b14e782212bc015d211ebdd27556a2b424/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I didn't do well on the last exam, and now I feel completely lost.",
+  "output": "The speaker is feeling lost after not doing well on a recent exam, which could be a source of stress or anxiety for them. It may be helpful to offer support or reassurance during such moments of vulnerability in order to help alleviate their distress. Additionally, it might be beneficial to explore ways to improve their academic performance and reduce feelings of helplessness or hopelessness. This can involve seeking out additional resources or finding strategies that work best for them. Overall, it's important to approach these situations with empathy and understanding, as they can have a significant impact on someone's mental health and overall well-being."
+ }
+]

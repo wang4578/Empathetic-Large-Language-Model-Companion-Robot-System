@@ -1,0 +1,8 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_F012.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "What do you want to do, argue with him?",
+  "output": "It's understandable that you feel frustrated and want to confront him about his behavior. However, it's important to consider the potential consequences of arguing with someone who may not be receptive or willing to change their actions. It might be helpful to take a step back and try to communicate your feelings in a calm and respectful manner before engaging in any kind of argument. This could help create a more productive conversation and potentially lead to a resolution."
+ }
+]

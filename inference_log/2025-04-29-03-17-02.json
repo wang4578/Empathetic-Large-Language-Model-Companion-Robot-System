@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F010.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Because if he's not coming back, then I'll kill myself.",
+  "output": "It sounds like you are feeling very upset about something that has happened or is happening in your life. It's important to remember that there are people who care about you and want to help you through difficult times. If you feel overwhelmed, it might be helpful to talk to someone you trust about what's going on and how you're feeling. They may be able to offer support or advice that can make things a little easier for you right now."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F012.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Believe with me Joe, you've got to believe. Okay, calm yourself. Only last week a boy came back missing longer than Larry. You read it yourself.",
+  "output": "It sounds like you are trying to convince someone of something important, but they seem hesitant or skeptical. It might be helpful to offer more concrete evidence or explain why you believe in what you're saying."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F013.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "You above all have got to believe! Just don't stop believing!",
+  "output": "I understand your frustration, but it's important to keep believing in yourself."
+ }
+]

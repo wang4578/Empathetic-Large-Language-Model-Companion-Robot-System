@@ -1,0 +1,8 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_M019.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "business. So it's okay then I'm just gonna go ahead with it?",
+  "output": "It sounds like you have a lot of things to consider, but ultimately, it's up to you what decision you make. Just remember that it's important to weigh all options before making any decisions in business."
+ }
+]

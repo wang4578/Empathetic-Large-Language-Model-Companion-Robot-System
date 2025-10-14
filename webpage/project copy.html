@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能语音交互系统</title>
+
+    <!-- 依赖库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/wav-encoder@1.3.0/dist/wav-encoder.min.js"></script>
+
+    <style>
+        /*========== 全局样式 ==========*/
+        :root {
+            --primary-color: #1890ff;
+            --danger-color: #ff4d4f;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        /* 标题样式 */
+        /* .header-banner {
+    background: #fff;
+    color: var(--text-dark);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    height: auto;
+    max-height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 100; 
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 24px;
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+}
+
+.sub-title {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0;
+} */
+
+        .header-banner {
+            background: linear-gradient(135deg, #44a3fc 0%, #0052cc 100%);
+            /* 添加渐变色 */
+            color: white;
+            /* 文字颜色改为白色 */
+            padding: 1.8rem 1rem;
+            text-align: center;
+            border-bottom: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-height: 60px;
+            /* 增加高度 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .main-title {
+            font-size: 28px;
+            /* 增大标题 */
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+            /* 增加字间距 */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* 添加文字阴影 */
+        }
+
+        .sub-title {
+            font-size: 16px;
+            /* 增大副标题 */
+            opacity: 0.9;
+            /* 半透明效果 */
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* 主容器布局 */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 2.2fr;
+            grid-template-rows: auto auto auto;
+            gap: 20px;
+            padding: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .robot-status {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* 垂直居中 */
+            flex-direction: column;
+            height: 90%;
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            animation: breathing 2s infinite;
+            width: auto !important;
+            min-width: 200px;
+
+        }
+
+        .robot-content {
+            display: flex;
+            height: 100%;
+            gap: 20px;
+        }
+
+        .robot-image {
+            width: 350px;
+            /* 放大图片尺寸 */
+            height: 350px;
+            object-fit: contain;
+            margin: 0;
+            /* 移除自动margin */
+            flex-shrink: 0;
+            /* 防止缩小 */
+        }
+
+        .audio-visualization-area {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fffbe6;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            min-width: 350px;
+        }
+
+        .waveform-container {
+            flex: 1;
+            background: #f8f8f8;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-module {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            overflow-y: auto;
+            min-height: 200px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .input-text {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .output-text {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* 机器人状态模块 */
+        robot-component {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .robot-content {
+            display: flex;
+            height: 100%;
+            gap: 20px;
+            align-items: flex-start;
+            /* 顶部对齐 */
+        }
+
+        .robot-image {
+            width: 340px;
+            /* 从280px增加到340px */
+            height: 340px;
+            object-fit: contain;
+            margin: 0;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            /* 添加悬浮动效 */
+        }
+
+        /* 波形图 */
+        .waveform-canvas {
+            width: 100%;
+            flex: 1;
+            min-height: 150px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        /* 输入文本模块 */
+        input-text-component {
+            grid-column: 2;
+            grid-row: 1;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            min-height: 100px;
+        }
+
+        .text-modules {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* min-width: 350px; */
+        }
+
+        /* 输出文本模块 */
+        output-text-component {
+            grid-column: 2;
+            grid-row: 2;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+        }
+
+        /* 音频输入模块 */
+        .audio-input-wrapper {
+            grid-column: 1 / span 3;
+            grid-row: 3;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 0px;
+            /* text-align: center; */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 文本显示区域 */
+        .text-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            min-height: 150px;
+        }
+
+        /* 标题样式 */
+        h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* 输出音频组件 */
+        output-audio-component {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* 占位文本样式 */
+        .placeholder-text {
+            color: #999;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        /* 机器人图片容器 */
+        .robot-container {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        /* 机器人图片 */
+        .robot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* 波形图容器 */
+        .waveform-container {
+            flex: 1;
+            margin-left: 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* 文本显示区域 - 输入 */
+        .input-text-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 文本显示区域 - 输出 */
+        .output-text-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 模块标题样式 */
+        .robot-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .input-title {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .output-title {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        /* 输出音频组件 */
+        output-audio-component {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        /* 机器人图片 */
+        .robot-image {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        /* 波形图 */
+        .waveform-canvas {
+            width: 100%;
+            /* height: 100%; */
+            height: 20px !important;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        /* 功能模块通用样式 */
+        .module {
+            border: 1px solid #e1e1e1;
+            padding: 20px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .recording-btn {
+            position: relative;
+            background-color: #ff4d4f;
+            color: white;
+        }
+
+        .recording-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: red;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #waveform {
+            height: 80px;
+            margin: 15px 0;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .format-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .audio-duration {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .upload-area {
+            height: 8vh;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-area.dragover {
+            border-color: #1890ff;
+            background-color: #f0faff;
+        }
+
+        .upload-area:active {
+            transform: scale(0.5);
+        }
+
+        .upload-prompt {
+            color: #666;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .send-btn {
+            width: 95%;
+            padding: 12px;
+            background: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .send-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .format-hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .file-preview {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-name {
+            color: #333;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-size {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 新增录音样式 */
+        .input-modes {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .record-btn, .send-btn {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .audio-btn-group {
+            display: flex;
+            flex-direction: row;
+            gap: 150px;
+            width: 80%;
+            margin: 10px auto 0 auto;
+        }
+
+        .audio-btn-group .record-btn,
+        .audio-btn-group .send-btn {
+            width: 50%;
+        }
+
+        .audio-btn-group .record-btn {
+            box-sizing: border-box;
+            height: 40px;
+            font-size: 15px;
+            background: #fff;
+            border: 2px solid #1890ff;
+            color: #1890ff;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .audio-btn-group .record-btn.recording {
+            background: #ff4d4f;
+            border-color: #ff4d4f;
+            color: #fff;
+        }
+        .audio-btn-group .send-btn {
+            box-sizing: border-box;
+            height: 40px;
+            font-size: 15px;
+            background: #1890ff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .audio-btn-group .send-btn:disabled {
+            background: #ccc;
+            color: #fff;
+            cursor: not-allowed;
+        }
+
+        .record-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ff4d4f;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .recording .record-indicator {
+            opacity: 1;
+            animation: pulse 1.5s infinite;
+        }
+
+        .record-status {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .duration {
+            color: #ff4d4f;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* 模式切换动画 */
+        .upload-mode,
+        .record-mode {
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+
+        .mode.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .robot-image {
+            width: 200px;
+            height: 200px;
+            transition: opacity 0.01s;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.01s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* 模块标题样式 */
+        .module h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .manual-play-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .manual-play-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 标题模块 -->
+        <div class="header-banner">
+            <div class="header-content">
+                <h1 class="main-title">有温度的大语言模型共情机器人系统</h1>
+                <p class="sub-title">接受上传文件和麦克风输入，输入的文件最好为wav格式</p>
+            </div>
+        </div>
+
+        <!-- 主内容容器 -->
+        <div class="container">
+            <!-- 合并后的机器人状态与音频播放区域 -->
+            <div class="robot-audio-area module" style="grid-column: 1 / span 2; grid-row: 1 / span 2; min-width: 300px; display: flex; flex-direction: row; align-items: stretch; padding: 25px; box-sizing: border-box;">
+                <!-- 机器人状态（左侧） -->
+                <div class="robot-status-noframe" style="flex: 0.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; background: none; box-shadow: none; border: none; padding: 0; height: 100%;">
+                    <h3 style="margin: 0 0 15px 0; color: #333; font-size: 16px;">🤖 机器人状态</h3>
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+                        <img v-if="!isListening && !isSpeaking" :src="'listen1.jpg'" class="robot-image">
+                        <transition name="fade" mode="out-in">
+                            <img v-if="isListening" :key="currentListeningIndex" :src="listeningImages[currentListeningIndex]" class="robot-image">
+                        </transition>
+                        <transition name="fade" mode="out-in">
+                            <img v-if="isSpeaking" :key="currentSpeakingIndex" :src="speakingImages[currentSpeakingIndex]" class="robot-image">
+                        </transition>
+                    </div>
+                </div>
+                <!-- 音频播放与波形（右侧） -->
+                <div class="audio-visualization-noframe" style="flex: 2.3; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; background: none; box-shadow: none; border: none; padding: 0 0 0 20px; max-height: 300px; overflow: hidden; align-self: center; margin-top: auto; margin-bottom: auto;">
+                    <audio v-show="outputAudio" ref="audioPlayer" :src="outputAudio" controls autoplay style="width: 100%; height: 28px; margin-bottom: 8px;"></audio>
+                    <canvas ref="waveform" class="waveform-canvas" width="400" height="32"></canvas>
+                </div>
+            </div>
+
+            <!-- 右：输入输出文本 -->
+            <div class="text-modules" style="margin-left: 0;">
+                <input-text-component :input-text="inputText" :is-loading="inputLoading" class="text-module input-text"></input-text-component>
+                <output-text-component :output-text="outputText" :is-loading="textLoading" class="text-module output-text"></output-text-component>
+            </div>
+
+            <!-- 下：音频输入模块，跨三列 -->
+            <div class="audio-input-wrapper" style="grid-column: 1 / span 3;">
+                <audio-input-component @audio-submit="handleAudioSubmit"></audio-input-component>
+            </div>
+        </div>
+
+        <!-- 在主模板里加 -->
+        <!-- <audio v-show="outputAudio" ref="audioPlayer" :src="outputAudio" controls autoplay style="width: 100%;"></audio>
+        <canvas ref="waveform" class="waveform-canvas" width="400" height="100"></canvas> -->
+    </div>
+
+    <script>
+        // 音频可视化工具函数
+        const drawWaveform = (canvasId, dataArray) => {
+            const canvas = document.getElementById(canvasId)
+            if (!canvas) return
+
+            const ctx = canvas.getContext('2d')
+            const width = canvas.width
+            const height = canvas.height
+
+            ctx.clearRect(0, 0, width, height)
+            ctx.fillStyle = '#3498db'
+
+            const barWidth = (width / dataArray.length) * 2.5
+            let x = 0
+
+            for (let i = 0; i < dataArray.length; i++) {
+                const barHeight = (dataArray[i] / 255) * height
+                ctx.fillRect(x, height - barHeight, barWidth, barHeight)
+                x += barWidth + 1
+            }
+        }
+
+        // 机器人组件
+        Vue.component('robot-component', {
+            props: ['isListening', 'isSpeaking'],
+            template: `
+        <div class="module">
+          <h3>🤖 机器人状态</h3>
+          <div class="robot-status">
+            <!-- 待机状态 -->
+                <img v-if="!isListening && !isSpeaking" 
+                     :src="currentStaticImage" 
+                     class="robot-image">
+
+                     <!-- 聆听状态 -->
+                <transition name="fade" mode="out-in">
+                    <img v-if="isListening"
+                         :key="currentListeningIndex"
+                         :src="listeningImages[currentListeningIndex]"
+                         class="robot-image">
+                </transition>
+                
+                <!-- 说话状态 -->
+                <transition name="fade" mode="out-in">
+                    <img v-if="isSpeaking"
+                         :key="currentSpeakingIndex"
+                         :src="speakingImages[currentSpeakingIndex]"
+                         class="robot-image">
+                </transition>
+                <!-- // <p v-if="isListening">🎧 正在聆听中...</p>
+            // <p v-if="isSpeaking">🗣️ 正在说话中...</p>
+            // <p v-if="!isListening && !isSpeaking">💤 待机状态</p> -->
+          </div>
+        </div>
+      `,
+            data() {
+                return {
+                    currentStaticImage: 'listen1.jpg',
+                    listeningImages: [
+                        'listen1.jpg',
+                        'listen2.jpg'
+                    ],
+                    speakingImages: [
+                        'speak1.jpg',
+                        'speak2.jpg'
+                    ],
+                    // 动画控制参数
+                    currentListeningIndex: 0,
+                    currentSpeakingIndex: 0,
+                    intervalId: null,
+                    transitionEffect: 'fast-fade' // 使用快速过渡效果
+                }
+            },
+            watch: {
+                isListening(newVal) {
+                    if (newVal) {
+                        this.startListeningAnimation();
+                    } else {
+                        this.clearAnimation();
+                    }
+                },
+                isSpeaking(newVal) {
+                    if (newVal) {
+                        this.startSpeakingAnimation();
+                    } else {
+                        this.clearAnimation();
+                    }
+                },
+                outputAudio(newVal) {
+                    if (newVal) {
+                        this.$nextTick(() => {
+                            this.initAudioVisualization();
+                        });
+                    }
+                }
+            },
+            methods: {
+
+                startListeningAnimation() {
+                    this.clearAnimation();
+                    this.intervalId = setInterval(() => {
+                        this.currentListeningIndex =
+                            (this.currentListeningIndex + 1) % this.listeningImages.length;
+                    }, 500);
+                },
+                startSpeakingAnimation() {
+                    this.clearAnimation();
+                    this.intervalId = setInterval(() => {
+                        this.currentSpeakingIndex =
+                            (this.currentSpeakingIndex + 1) % this.speakingImages.length;
+                    }, 500);
+                },
+                clearAnimation() {
+                    if (this.intervalId) {
+                        clearInterval(this.intervalId);
+                        this.intervalId = null;
+                    }
+                }
+            },
+            beforeDestroy() {
+                this.clearAnimation();
+            }
+        });
+
+        // 输出语音组件
+        Vue.component('output-audio-component', {
+            props: ['isLoading', 'audioData'],
+            template: `
+                <div class="module">
+                    <h3>🔊 语音输出</h3>
+                    <div v-if="isLoading" class="loading"></div>
+                    <div v-else-if="audioData">
+                <canvas class="waveform-canvas" ref="waveform"></canvas>
+                <audio 
+                    ref="audioPlayer"
+                    controls 
+                    @play="$emit('play-start')"
+                    @ended="$emit('play-end')">
+                            <source :src="audioData" type="audio/mpeg">
+                </audio>
+                    </div>
+                </div>
+            `,
+            mounted() {
+                if (this.$refs.audioPlayer) {
+                this.initAudioVisualization();
+                }
+            },
+            watch: {
+                audioData(newVal) {
+                    if (newVal && this.$refs.audioPlayer) {
+                        this.$nextTick(() => {
+                            this.initAudioVisualization();
+                        });
+                    }
+                }
+            },
+            methods: {
+                initAudioVisualization() {
+                    const audioElement = this.$refs.audioPlayer;
+                    if (!audioElement) return;
+
+                    try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const analyser = audioContext.createAnalyser();
+                    const source = audioContext.createMediaElementSource(audioElement);
+
+                    source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+                    analyser.fftSize = 256;
+
+                    const bufferLength = analyser.frequencyBinCount;
+                    const dataArray = new Uint8Array(bufferLength);
+                    const canvas = this.$refs.waveform;
+                        if (!canvas) return;
+
+                    const ctx = canvas.getContext('2d');
+
+                    const draw = () => {
+                        requestAnimationFrame(draw);
+                        analyser.getByteTimeDomainData(dataArray);
+
+                        ctx.fillStyle = 'white';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = '#3498db';
+                        ctx.beginPath();
+
+                        const sliceWidth = canvas.width * 1.0 / bufferLength;
+                        let x = 0;
+
+                        for (let i = 0; i < bufferLength; i++) {
+                            const v = dataArray[i] / 128.0;
+                            const y = v * canvas.height / 2;
+
+                            if (i === 0) {
+                                ctx.moveTo(x, y);
+                            } else {
+                                ctx.lineTo(x, y);
+                            }
+
+                            x += sliceWidth;
+                        }
+
+                        ctx.lineTo(canvas.width, canvas.height / 2);
+                        ctx.stroke();
+                    };
+
+                    draw();
+                    } catch (error) {
+                        console.warn('音频可视化初始化失败:', error);
+                    }
+                }
+            }
+        });
+
+        // 输入文本组件
+        Vue.component('input-text-component', {
+            props: ['inputText', 'isLoading'],
+            template: `
+        <div class="module">
+          <h3>📝 输入文本</h3>
+          <div v-if="isLoading" class="loading-container">
+            <div class="loading"></div>
+          </div>
+          <div v-else class="text-box" :class="{ 'empty': !inputText }">
+            {{ inputText || '等待输入文本...' }}
+          </div>
+        </div>
+      `
+        });
+
+        // 输出文本组件
+        Vue.component('output-text-component', {
+            props: ['outputText', 'isLoading'],
+            template: `
+        <div class="module">
+          <h3>🧠 文本输出</h3>
+          <div v-if="isLoading" class="loading"></div>
+          <div v-else class="text-box" style="min-height: 100px; padding: 10px; border: 1px solid #eee; border-radius: 4px;">
+            {{ outputText || '等待AI回复...' }}
+          </div>
+        </div>
+      `
+        });
+
+        // 音频输入组件（增强版）
+        Vue.component('audio-input-component', {
+            props: ['duration'],
+            data() {
+                return {
+                    isRecording: false,
+                    dragover: false,
+                    selectedFile: null,
+                    audioContext: null,
+                    mediaRecorder: null,
+                    audioChunks: [],
+                    recordingDuration: 0,
+                    timerInterval: null
+                }
+            },
+            template: `
+        <div class="module" style="padding: 14px 18px 12px 18px; min-height: 120px;">
+            <h3>🎤 音频输入</h3>
+            
+            <!-- 上传区域 -->
+                <div class="upload-mode" :class="{ 'active': !isRecording }">
+                    <div class="upload-area" 
+                         @click="triggerFileInput"
+                         @dragover.prevent="dragover = true"
+                         @dragleave="dragover = false"
+                         @drop.prevent="handleDrop"
+                         :class="{ 'dragover': dragover }">
+                        <div class="upload-prompt">
+                            <p>单击上传或拖拽音频文件</p>
+                            <p class="format-hint">支持格式：mp3、wav</p>
+                        </div>
+                        <input type="file" 
+                               accept=".mp3,.wav"
+                               @change="handleFileUpload"
+                               hidden
+                               ref="fileInput">
+                    </div>
+                </div>
+
+            <!-- 按钮并排区域 -->
+            <div class="audio-btn-group">
+                    <button class="record-btn" 
+                            @click="toggleRecording"
+                            :class="{ 'recording': isRecording }">
+                        <span class="record-indicator"></span>
+                        {{ isRecording ? '停止录音' : '开始录音' }}
+                    </button>
+            <button class="send-btn"
+                    @click="submit"
+                        :disabled="!hasAudio">发送音频</button>
+            </div>
+
+            <!-- 文件预览 -->
+            <div v-if="selectedFile" class="file-preview">
+                <span class="file-type">{{ isRecording ? '🎤 录音文件' : '📁 上传文件' }}</span>
+                <div>
+                    <span class="file-name">{{ selectedFile.name }}</span>
+                    <span class="file-size">{{ formatFileSize(selectedFile.size) }}</span>
+                </div>
+            </div>
+        </div>
+    `,
+            computed: {
+                hasAudio() {
+                    return this.selectedFile !== null;
+                }
+            },
+            methods: {
+                // 录音控制方法
+                async toggleRecording() {
+                    if (!this.isRecording) {
+                        await this.startRecording();
+                    } else {
+                        await this.stopRecording();
+                    }
+                },
+
+                async startRecording() {
+                    try {
+                        // 初始化音频上下文
+                        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+                        // 配置MediaRecorder
+                        this.mediaRecorder = new MediaRecorder(stream, {
+                            mimeType: 'audio/webm'
+                        });
+
+                        this.audioChunks = [];
+                        this.mediaRecorder.ondataavailable = (event) => {
+                            if (event.data.size > 0) {
+                                this.audioChunks.push(event.data);
+                            }
+                        };
+
+                        this.mediaRecorder.onstop = async () => {
+                            // 将录音数据转换为MP3
+                            const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+
+                            try {
+                                // 创建音频元素播放录音
+                                const audioURL = URL.createObjectURL(audioBlob);
+                                const audio = new Audio(audioURL);
+
+                                // 转换为MP3格式
+                                const mp3Blob = await this.convertToMp3(audioBlob);
+
+                                // 创建File对象
+                                const fileName = `recording_${new Date().getTime()}.mp3`;
+                                this.selectedFile = new File([mp3Blob], fileName, { type: 'audio/mp3' });
+
+                                // 预览音频
+                                this.previewAudio(this.selectedFile);
+
+                            } catch (error) {
+                                console.error('转换MP3失败:', error);
+                                alert('录音转换失败，请重试');
+                            }
+
+                            // 停止所有音轨
+                            stream.getTracks().forEach(track => track.stop());
+                        };
+
+                        // 开始录音
+                        this.mediaRecorder.start(10);
+                        this.isRecording = true;
+                        this.startTimer();
+
+                    } catch (error) {
+                        console.error('录音启动失败:', error);
+                        alert('无法访问麦克风，请确保已授予权限');
+                    }
+                },
+
+                async stopRecording() {
+                        if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+                            this.mediaRecorder.stop();
+                            this.isRecording = false;
+                            this.stopTimer();
+                        }
+                },
+
+                startTimer() {
+                    this.recordingDuration = 0;
+                    this.timerInterval = setInterval(() => {
+                        this.recordingDuration++;
+                    }, 1000);
+                },
+
+                stopTimer() {
+                    if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                        this.timerInterval = null;
+                    }
+                },
+
+                async convertToMp3(audioBlob) {
+                    return new Promise(async (resolve, reject) => {
+                        try {
+                            // 将Blob转换为ArrayBuffer
+                            const arrayBuffer = await audioBlob.arrayBuffer();
+
+                            // 解码音频数据
+                            const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+
+                            // 创建离线音频上下文
+                            const offlineCtx = new OfflineAudioContext({
+                                numberOfChannels: audioBuffer.numberOfChannels,
+                                length: audioBuffer.length,
+                                sampleRate: audioBuffer.sampleRate
+                            });
+
+                            // 创建音频源
+                            const source = offlineCtx.createBufferSource();
+                            source.buffer = audioBuffer;
+                            source.connect(offlineCtx.destination);
+                            source.start();
+
+                            // 渲染音频
+                            const renderedBuffer = await offlineCtx.startRendering();
+
+                            // 将AudioBuffer转换为WAV格式
+                            const wavBlob = await this.audioBufferToWav(renderedBuffer);
+
+                            resolve(wavBlob);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    });
+                },
+
+                audioBufferToWav(audioBuffer) {
+                    const numOfChan = audioBuffer.numberOfChannels;
+                    const length = audioBuffer.length * numOfChan * 2;
+                    const buffer = new ArrayBuffer(44 + length);
+                    const view = new DataView(buffer);
+                    const channels = [];
+                    let offset = 0;
+                    let pos = 0;
+
+                    // 写入WAV头部信息
+                    const writeString = (view, offset, string) => {
+                        for (let i = 0; i < string.length; i++) {
+                            view.setUint8(offset + i, string.charCodeAt(i));
+                        }
+                    };
+
+                    // RIFF chunk descriptor
+                    writeString(view, pos, 'RIFF'); pos += 4;
+                    view.setUint32(pos, 36 + length, true); pos += 4;
+                    writeString(view, pos, 'WAVE'); pos += 4;
+
+                    // fmt sub-chunk
+                    writeString(view, pos, 'fmt '); pos += 4;
+                    view.setUint32(pos, 16, true); pos += 4;
+                    view.setUint16(pos, 1, true); pos += 2;
+                    view.setUint16(pos, numOfChan, true); pos += 2;
+                    view.setUint32(pos, audioBuffer.sampleRate, true); pos += 4;
+                    view.setUint32(pos, audioBuffer.sampleRate * 2 * numOfChan, true); pos += 4;
+                    view.setUint16(pos, numOfChan * 2, true); pos += 2;
+                    view.setUint16(pos, 16, true); pos += 2;
+
+                    // data sub-chunk
+                    writeString(view, pos, 'data'); pos += 4;
+                    view.setUint32(pos, length, true); pos += 4;
+
+                    // 写入音频数据
+                    for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+                        channels.push(audioBuffer.getChannelData(i));
+                    }
+
+                    while (pos < view.byteLength) {
+                        for (let i = 0; i < numOfChan; i++) {
+                            const sample = Math.max(-1, Math.min(1, channels[i][offset]));
+                            view.setInt16(pos, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
+                            pos += 2;
+                        }
+                        offset++;
+                    }
+
+                    return new Blob([buffer], { type: 'audio/wav' });
+                },
+
+                // 预览音频
+                previewAudio(file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const audio = new Audio(e.target.result);
+                        audio.controls = true;
+
+                        // 如果已有预览元素，先移除
+                        const existingPreview = document.querySelector('.audio-preview');
+                        if (existingPreview) {
+                            existingPreview.remove();
+                        }
+
+                        // 创建新的预览元素
+                        const previewDiv = document.createElement('div');
+                        previewDiv.className = 'audio-preview';
+                        previewDiv.appendChild(audio);
+
+                        // 添加到页面
+                        const uploadArea = document.querySelector('.upload-area');
+                        uploadArea.appendChild(previewDiv);
+                    };
+                    reader.readAsDataURL(file);
+                },
+
+                triggerFileInput() {
+                    this.$refs.fileInput.click()
+                },
+                handleDrop(e) {
+                    this.dragover = false
+                    const files = e.dataTransfer.files
+                    if (files.length > 0) {
+                        this.handleFileUpload({ target: { files } })
+                    }
+                },
+                // 处理文件上传
+                async handleFileUpload(e) {
+                    const file = e.target.files?.[0] || e.dataTransfer?.files?.[0];
+                    if (!file) return;
+
+                    // 验证文件类型
+                    const allowedTypes = ['audio/mp3', 'audio/wav', 'audio/mpeg'];
+                    if (!allowedTypes.includes(file.type)) {
+                        alert('仅支持 MP3 和 WAV 格式');
+                        return;
+                    }
+
+                    // 验证文件大小（示例限制为10MB）
+                    const MAX_SIZE = 10 * 1024 * 1024; // 10MB
+                    if (file.size > MAX_SIZE) {
+                        alert('文件大小不能超过10MB');
+                        return;
+                    }
+
+                    // 存储文件并预览
+                    this.selectedFile = file;
+                    this.previewAudio(file);
+                },
+
+                // 提交音频
+                async submit() {
+                    if (!this.selectedFile) {
+                        alert('请先选择音频文件');
+                        return;
+                    }
+
+                    try {
+
+                        console.log('开始上传文件:', this.selectedFile.name);
+                        const formData = new FormData();
+                        formData.append('audio', this.selectedFile);
+
+                        console.log('发送请求到服务器...');
+                        const currentPort = window.location.port || '5500';
+                        const response = await fetch(`http://127.0.0.1:${currentPort}/upload`, {
+                            method: 'POST',
+                            mode: 'cors',
+                            credentials: 'include',
+                            body: formData
+                        });
+
+                        console.log('服务器响应状态:', response.status);
+
+                        if (!response.ok) {
+                            const errorText = await response.text();
+                            console.error('服务器错误响应:', errorText);
+                            throw new Error(`上传失败: ${response.status} - ${errorText || response.statusText}`);
+                        }
+
+                        const responseData = await response.json();
+                        console.log('服务器响应数据:', responseData);
+                        alert('文件上传成功！保存路径: ' + responseData.filepath);
+
+                        // 发送成功的文件信息
+                        this.$emit('audio-submit', {
+                            name: this.selectedFile.name,
+                            type: this.selectedFile.type,
+                            size: this.selectedFile.size
+                        });
+
+                        // 清除已选文件
+                        this.selectedFile = null;
+
+
+                    } catch (error) {
+                        console.error('上传错误:', error);
+                        alert('文上传失败: ' + error.message);
+                    }
+                },
+
+                // 新增文件大小格式化
+                formatFileSize(bytes) {
+                    if (bytes === 0) return '0 B'
+                    const k = 1024
+                    const sizes = ['B', 'KB', 'MB']
+                    const i = Math.floor(Math.log(bytes) / Math.log(k))
+                    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+                },
+
+                // 格式化时间显示
+                formatDuration(seconds) {
+                    const mins = Math.floor(seconds / 60)
+                    const secs = Math.floor(seconds % 60)
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`
+                }
+            },
+            beforeDestroy() {
+                if (this.mediaRecorder) {
+                    this.mediaRecorder.stream.getTracks().forEach(track => track.stop())
+                }
+            }
+        });
+
+        // 主Vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                isListening: false,
+                isSpeaking: false,
+                audioLoading: false,
+                textLoading: false,
+                inputLoading: false,
+                inputText: '',
+                outputText: '',
+                outputAudio: null,
+                isRecording: false,
+                recordingDuration: 0,
+                audio_path: '',
+                showManualPlayButton: false,
+                currentListeningIndex: 0,
+                currentSpeakingIndex: 0,
+                listeningImages: [
+                    'listen1.jpg',
+                    'listen2.jpg'
+                ],
+                speakingImages: [
+                    'speak1.jpg',
+                    'speak2.jpg'
+                ]
+            },
+            mounted() {
+                // 自动播放处理
+                this.$nextTick(() => {
+                    const player = this.$refs.audioPlayer;
+                    if (player) {
+                        player.play().catch(error => {
+                            console.log('需要用户交互才能自动播放');
+                        });
+                    }
+                });
+            },
+            methods: {
+                initAudioVisualization() {
+                    console.log("产生波形中...");
+                    const audioElement = this.$refs.audioPlayer;
+                    const canvas = this.$refs.waveform;
+                    if (!audioElement || !canvas) return;
+
+                    // 创建/复用 AudioContext
+                    if (!this._audioContext) {
+                        this._audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    }
+                    const audioContext = this._audioContext;
+
+                    // 断开旧的 source
+                    if (this._source) {
+                        this._source.disconnect();
+                    }
+
+                    // 重新创建 source
+                    this._source = audioContext.createMediaElementSource(audioElement);
+                    const analyser = audioContext.createAnalyser();
+                    this._source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+                    analyser.fftSize = 256;
+
+                    const bufferLength = analyser.frequencyBinCount;
+                    const dataArray = new Uint8Array(bufferLength);
+                    const ctx = canvas.getContext('2d');
+
+                    const draw = () => {
+                        this._drawAnimation = requestAnimationFrame(draw);
+                        analyser.getByteTimeDomainData(dataArray);
+
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = '#3498db';
+                        ctx.beginPath();
+
+                        const sliceWidth = canvas.width * 1.0 / bufferLength;
+                        let x = 0;
+
+                        for (let i = 0; i < bufferLength; i++) {
+                            const v = dataArray[i] / 128.0;
+                            const y = v * canvas.height / 2;
+                            if (i === 0) {
+                                ctx.moveTo(x, y);
+                            } else {
+                                ctx.lineTo(x, y);
+                            }
+                            x += sliceWidth;
+                        }
+                        ctx.lineTo(canvas.width, canvas.height / 2);
+                        ctx.stroke();
+                    };
+
+                    draw();
+
+                    // 停止时取消动画
+                    audioElement.onended = () => {
+                        if (this._drawAnimation) {
+                            cancelAnimationFrame(this._drawAnimation);
+                        }
+                    };
+                },
+
+                async handleAudioSubmit(fileInfo) {
+                    try {
+                        // 一开始静止
+                        this.isListening = false;
+                        this.isSpeaking = false;
+                        this.currentListeningIndex = 0;
+                        this.currentSpeakingIndex = 0;
+                        if (this._listeningTimer) { clearInterval(this._listeningTimer); this._listeningTimer = null; }
+                        if (this._speakingTimer) { clearInterval(this._speakingTimer); this._speakingTimer = null; }
+                        // 开始流程
+                        this.isListening = true;
+                        this.audioLoading = true;
+                        this.textLoading = true;
+                        this.inputLoading = true;
+                        this.inputText = '';
+                        this.outputText = '';
+                        this.outputAudio = null;
+                        this.audio_path = '';
+
+                        // 开始listening动画
+                        this._listeningTimer = setInterval(() => {
+                            this.currentListeningIndex = (this.currentListeningIndex + 1) % this.listeningImages.length;
+                        }, 500);
+
+                        if (fileInfo) {
+                            // 显示文件信息
+                            console.log('处理的音频文件:', {
+                                name: fileInfo.name,
+                                type: fileInfo.type,
+                                size: (fileInfo.size / 1024).toFixed(2) + 'KB'
+                            });
+                            // 1. 上传音频并获取ASR文本
+                            const currentPort = window.location.port || '5500';
+                            const asrResp = await fetch(`http://127.0.0.1:${currentPort}/asr`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ audio: fileInfo.name })
+                            });
+                            if (!asrResp.ok) {
+                                const errorText = await asrResp.text();
+                                throw new Error('ASR识别失败: ' + errorText);
+                            }
+                            const asrData = await asrResp.json();
+                            this.inputText = asrData.asr;
+                            this.audio_path = asrData.audio_path;
+                            this.inputLoading = false;
+                            // 2. 立即展示asr
+                            const payload = {
+                                asr: this.inputText,
+                                audio_path: this.audio_path
+                            }
+                            const llmResp = await fetch(`http://127.0.0.1:${currentPort}/llm`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(payload)
+                            });
+                            const llm = await llmResp.json();
+                            if (!llmResp.ok) {
+                                throw new Error('大模型推理失败');
+                            }
+                            this.outputText = llm.llm;
+                            this.isListening = false;
+                            this.textLoading = false;
+                            // 停止listening动画
+                            if (this._listeningTimer) { clearInterval(this._listeningTimer); this._listeningTimer = null; }
+                            this.currentListeningIndex = 0;
+
+                            // 进入speaking动画
+                            
+                            this._speakingTimer = setInterval(() => {
+                                this.currentSpeakingIndex = (this.currentSpeakingIndex + 1) % this.speakingImages.length;
+                            }, 500);
+
+                            const ttsResp = await fetch(`http://127.0.0.1:${currentPort}/tts`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ response: this.outputText })
+                            });
+                            const tts_url = await ttsResp.json();
+                            this.isSpeaking = true;
+                            //alert('音频链接：' + tts_url.tts_url);
+                            this.outputAudio = tts_url.tts_url;
+                            this.audioLoading = false;
+
+                            await this.$nextTick();
+                            const isConfirmed = true;
+                            if (isConfirmed) {
+                                const vm = this;
+                                setTimeout(async () => {
+                                    const player = await vm.waitForAudioPlayer();
+                                    if (player) {
+                                        player.load();
+                                        player.play().catch(err => {
+                                            console.error('自动播放失败:', err);
+                                            vm.showManualPlayButton = true;
+                                        });
+                                        vm.initAudioVisualization();
+                                        player.onended = () => {
+                                            // 停止speaking动画，回到静止
+                                            if (vm._speakingTimer) { clearInterval(vm._speakingTimer); vm._speakingTimer = null; }
+                                            vm.isSpeaking = false;
+                                            vm.currentSpeakingIndex = 0;
+                                            vm.currentListeningIndex = 0;
+                                        };
+                                    } else {
+                                        console.error('音频元素未找到');
+                                        vm.showManualPlayButton = true;
+                                    }
+                                }, 0);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('处理流程错误:', error);
+                        alert('处理失败: ' + error.message);
+                        // 出错时也回到静止
+                        this.isListening = false;
+                        this.isSpeaking = false;
+                        this.textLoading = false;
+                        this.inputLoading = false;
+                        this.currentListeningIndex = 0;
+                        this.currentSpeakingIndex = 0;
+                        if (this._listeningTimer) { clearInterval(this._listeningTimer); this._listeningTimer = null; }
+                        if (this._speakingTimer) { clearInterval(this._speakingTimer); this._speakingTimer = null; }
+                    }
+                },
+
+                async waitForAudioPlayer(maxTries = 20, interval = 50) {
+                    let tries = 0;
+                    while (!this.$refs.audioPlayer && tries < maxTries) {
+                        await new Promise(resolve => setTimeout(resolve, interval));
+                        tries++;
+                    }
+                    return this.$refs.audioPlayer;
+                },
+
+                handleManualPlay() {
+                    const player = this.$refs.audioPlayer;
+                    if (player) {
+                        player.play();
+                        this.showManualPlayButton = false;
+                    }
+                },
+
+                startSpeaking() {
+                    this.isSpeaking = true
+                },
+
+                stopSpeaking() {
+                    this.isSpeaking = false
+                },
+                // 模拟API调用
+                transcribeAudio(file) {
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            resolve("从音频转换的文本内容。当前时间: " + new Date().toLocaleTimeString())
+                        }, 1500)
+                    })
+                },
+
+                getLLMResponse(text) {
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            resolve({
+                                text: `AI回复：您说的是"${text}"\n\n` +
+                                    `系统的模拟回复。` +
+                                    `当前时间: ${new Date().toLocaleTimeString()}`
+                            })
+                        }, 2000)
+                    })
+                },
+                generateSpeech(text) {
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            // 这里应该是真实API返回的音频URL
+                            // 演示使用虚拟URL
+                            resolve("https://example.com/generated_audio.wav?text=" + encodeURIComponent(text))
+                        }, 2500)
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

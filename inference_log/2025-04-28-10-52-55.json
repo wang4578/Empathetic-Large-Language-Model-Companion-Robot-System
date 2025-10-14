@@ -1,0 +1,38 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from someone who may know more about the situation? It might help alleviate some of the confusion and stress."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from a supervisor or manager?"
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from someone who may know more about the situation? It might help alleviate some of the stress and confusion."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for help or clarification from someone nearby? They might be able to assist you in finding the right line."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from a supervisor or manager?"
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
+  "output": "I understand your frustration with the registration process. It can be overwhelming when you have to follow specific instructions. Have you considered asking for clarification or seeking assistance from a supervisor or manager?"
+ }
+]

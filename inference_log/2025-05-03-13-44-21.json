@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_F023.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I'm sorry. I ignore what I've got to ignore. That girl is Larry's girl.",
+  "output": "It sounds like you have a lot of pent-up frustration that has been building up over time, and it's understandable that you feel angry about not being able to change certain situations in your life. It might be helpful to try talking to someone about these feelings or seeking professional help if they become too overwhelming. Remember to take care of yourself as well by finding healthy ways to cope with stress and managing your emotions in a positive way."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_F025.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "You're a considerate fellow, there's nothing wrong in that.",
+  "output": "It sounds like you are trying to be kind but it comes across as condescending."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_M002.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I was out here for this morning, I heard a crack and I looked out the window and he was standing right over there.",
+  "output": "It sounds like you had a startling experience with someone being present near your window. It's understandable that you would feel anxious or scared in such a situation. Have you considered seeking professional help to address any lingering concerns?"
+ }
+]

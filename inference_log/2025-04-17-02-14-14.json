@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/tmp/gradio/99a7c428f9152caa29f101d35028015255c16c5cea3857f799e3ee31d473b6c0/20250414_055720_en_vits.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "From the background sound of a radio, it can be inferred that the speaker is in a public place or at home listening to the radio. The speech content suggests that the speaker is expressing their frustration with someone who is not responding to them. They mention feeling like trash and being ignored by others, which could indicate a lack of social interaction or support.",
+  "output": "It can be inferred that the speaker is in a public place or at home listening to the radio because they mention the background sound of a radio. It can also be inferred that the speaker is expressing their frustration with someone who is not responding to them based on the speech content. The speaker's feelings of being ignored and feeling like trash suggest a lack of social interaction or support. This inference is supported by the fact that the speaker mentions feeling frustrated and unsupported. Overall, this scenario implies that the speaker may be seeking validation or attention from someone but feels unheard or disregarded."
+ },
+ {
+  "audio_id": "/tmp/gradio/99a7c428f9152caa29f101d35028015255c16c5cea3857f799e3ee31d473b6c0/20250414_055720_en_vits.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "From the background sound of a radio, it can be inferred that the speaker is in a public place or at home listening to the radio. The speech content suggests that the speaker is expressing their frustration with someone who is not responding to them. They mention feeling like trash and being ignored by others, which could indicate a lack of social interaction or support.",
+  "output": "It can be inferred that the speaker is in a public place or at home listening to the radio because they mention the background sound of a radio. It can also be inferred that the speaker is expressing their frustration with someone who is not responding to them. This inference is based on the speech content where the speaker mentions feeling like trash and being ignored by others."
+ },
+ {
+  "audio_id": "/tmp/gradio/99a7c428f9152caa29f101d35028015255c16c5cea3857f799e3ee31d473b6c0/20250414_055720_en_vits.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "From the background sound of a radio, it can be inferred that the speaker is in a public place or at home listening to the radio. The speech content suggests that the speaker is expressing their frustration with someone who is not responding to them. They mention feeling like trash and being ignored by others, which could indicate a lack of social interaction or support.",
+  "output": "It can be inferred that the speaker is in a public place or at home listening to the radio because they mention the background sound of a radio. It can also be inferred that the speaker is expressing their frustration with someone who is not responding to them. This inference is made based on the speech content where the speaker mentions feeling like trash and being ignored by others. Therefore, the speaker's emotions are likely influenced by their surroundings and the lack of response from the other person."
+ }
+]

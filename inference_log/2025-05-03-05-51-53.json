@@ -1,0 +1,26 @@
+[
+ {
+  "audio_id": "/tmp/gradio/5494da5143bed8649e6a9bb6b93f722ecd2b3a72e8c56893714c0f4fef7239b0/dia0_utt11.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "All right then. We'll have a definite answer for you on Monday. But I think I can say with some confidence, you'll fit in well here.",
+  "output": "That sounds promising! I'm looking forward to hearing more about it."
+ },
+ {
+  "audio_id": "/tmp/gradio/3d0329fdde968bd5e6408e7dddb3dfa212fd8b44ee5c1cc3ecf0319537f1e86c/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "I didn't do well on the last exam and now I feel completely lost.",
+  "output": "It sounds like you're feeling overwhelmed by your recent performance, but it's important to remember that one exam doesn't define your entire academic journey. Take a step back, regroup, and focus on what you can control moving forward. It may also be helpful to talk to someone about how you're feeling or seek out resources for support. Don't give up hope just yet!"
+ },
+ {
+  "audio_id": "/tmp/gradio/29b624ffca7fb2ba607c4df99c931d9682d54570fa79015ea776bc12b09839ae/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Today, my morning coffee tasted extra good with sunshine streaming through the window.",
+  "output": "It sounds like you had a great start to your day! The combination of good coffee and sunshine is definitely a nice way to begin."
+ },
+ {
+  "audio_id": "/tmp/gradio/21f7caff3129beee3e8f45e7b982c6c0722ab69cd58c9f33e30c64dea2db6a8c/audio.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "A stranger complimented my hat on the subway. Such a tiny thing, but it felt so nice.",
+  "output": "It's always heartwarming to receive positive feedback, especially from strangers. It can make our day and boost our confidence. Keep up the good work!"
+ }
+]

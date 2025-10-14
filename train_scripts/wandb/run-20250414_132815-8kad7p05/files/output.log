@@ -1,0 +1,30 @@
+  0%|                                                                                                                                     | 0/25 [00:00<?, ?it/s]/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+
+
+
+
+
+
+
+
+ 40%|█████████████████████████████████████████████████▌                                                                          | 10/25 [07:15<10:20, 41.40s/it]
+
+
+
+
+
+
+
+
+
+
+ 80%|███████████████████████████████████████████████████████████████████████████████████████████████████▏                        | 20/25 [14:10<03:27, 41.53s/it]
+
+
+
+
+
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 25/25 [17:38<00:00, 42.34s/it]
+{'train_runtime': 1095.3862, 'train_samples_per_second': 5.925, 'train_steps_per_second': 0.023, 'train_loss': 1.7012576675415039, 'epoch': 0.99}

@@ -1,0 +1,14 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/recording_1745467907652.mp3",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "",
+  "output": "It can be inferred that someone is opening a bottle of soda or carbonated drink. The sound of the cap being removed suggests that it was a plastic bottle, while the hissing noise indicates that gas has been released from the bottle. This could indicate that the person is enjoying a refreshing drink."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/recording_1745469594298.mp3",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "you",
+  "output": "The speaker is expressing a positive emotion, possibly happiness or excitement. This inference is based on the happy tone of their voice and the content of the speech being 'you'."
+ }
+]

@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/tmp/gradio/32d3bdc8a7a216d924d02e0a519f10c4a2ceaa269b10d416c67f9667d1afdb15/Ses02F_impro03_M007.wav",
+  "instruction": "You are an emotional dialogue robot.  Please provide the most appropriate response based on this information and the dialogue content, maintaining a calm and objective demeanor.",
+  "input": "That is the most romantic thing I have ever heard.",
+  "output": "I'm glad you think so! What was it that made it so special to you?"
+ },
+ {
+  "audio_id": "/tmp/gradio/130c078d0000f8c692fe1f1b467e1b17084695436c2a7babef0fb87648da458e/Ses02F_impro03_M009.wav",
+  "instruction": "You are an emotional dialogue robot.  Please provide the most appropriate response based on this information and the dialogue content, maintaining a calm and objective demeanor.",
+  "input": "Yeah, and the candles wouldn't stick. No, I didn't know anything about it.",
+  "output": "I understand that you were trying to light candles but they didn't work out as expected. It can be frustrating when things don't go according to plan. Have you tried using a different type of candle or perhaps consulted with someone who has more experience in this area? It may help to find a solution that works better for you."
+ },
+ {
+  "audio_id": "/tmp/gradio/e8501d1117e7dc9085f4572e34bddae737e2537f1745c1b362d0b7007293db25/dia0_utt0.wav",
+  "instruction": "You are an emotional dialogue robot.  Please provide the most appropriate response based on this information and the dialogue content, maintaining a calm and objective demeanor.",
+  "input": "Also, I was the point person on my company's transition from the KL5 to GR6 systems.",
+  "output": "It sounds like you had a significant role in your company's transition to the GR6 system. How did that experience impact your work? Was it challenging or rewarding? It's great that you were able to take on such a responsibility and lead the team through the transition successfully."
+ }
+]

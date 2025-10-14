@@ -1,0 +1,26 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_F021.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "you want to make sure that your father's not gonna",
+  "output": "It sounds like you have a concern about your father's well-being, which is understandable given the situation. It might be helpful to discuss your feelings with him or seek professional help if necessary. Remember to take care of yourself as well during this time."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_M042.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "How you doing? I'm a pretty tough guy.",
+  "output": "It sounds like you may be feeling down or struggling with something, but it's important to remember that you have resilience and strength within you. It's okay to take things one day at a time and seek support when needed. You can do this!"
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_M026.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "It's what? I'm just, I'm not fast with women.",
+  "output": "I understand that you may feel frustrated or overwhelmed when it comes to interacting with women. It can be challenging to keep up with their pace, but it's important to remember that everyone has different communication styles and preferences. Perhaps seeking out resources or support from others who have similar experiences could help you improve your skills in these situations."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_M004.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "So I figured I'd just let it wait.",
+  "output": "It sounds like you have a lot of things on your mind, and letting something wait might be a good way to prioritize them. It can also help with decision-making by giving yourself time to think about the situation more objectively. Just make sure not to procrastinate too much or it could become overwhelming. Is there anything else you would like to talk about?"
+ }
+]

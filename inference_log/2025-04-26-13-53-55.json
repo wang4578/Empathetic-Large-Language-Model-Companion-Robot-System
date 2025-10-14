@@ -1,0 +1,26 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M016.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Look at you. You're shaking.",
+  "output": "I understand that you are feeling upset, but it is important to remember that everyone has different ways of coping with their emotions. It might be helpful to take a moment to breathe deeply or engage in some physical activity to release any tension in your body."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_M015.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "What does that mean? Me above all? Huh? What does that mean?",
+  "output": "It sounds like you're feeling frustrated or confused about what someone said to you, which is understandable given how it seems to contradict your own beliefs or values. It might be helpful to try to clarify their meaning or ask for more clarification so you can better understand where they're coming from."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/recording_1745676059916.mp3",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Hey, hello. Do you know what I'm feeling?",
+  "output": "I'm sorry to hear that you're feeling down. It can be tough when things don't go as planned. Is there anything specific that's causing your sadness or frustration? Sometimes talking it out with a friend or family member can help. Or maybe finding something new to do or trying a different activity could help lift your spirits. Remember to take care of yourself and try not to dwell too much on negative thoughts."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_2_F013.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "You above all have got to believe! Just don't stop believing!",
+  "output": "I understand your frustration, but it's important to keep believing in yourself."
+ }
+]

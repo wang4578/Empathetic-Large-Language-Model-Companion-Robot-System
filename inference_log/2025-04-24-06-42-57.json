@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_F025.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "Oh, jeez.",
+  "output": "The speaker is expressing frustration or disappointment with a situation. The low volume of their voice suggests they are feeling down or emotional about it."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_M008.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "So then, would you want to? I mean, I guess you kind of have to know. Maybe that's why I asked you to come.",
+  "output": "The speaker is expressing uncertainty about something and asking for confirmation or clarification. The low volume and slow speed suggest a sense of vulnerability or hesitation in their communication. This could indicate a personal or emotional topic being discussed, such as a decision or invitation they are unsure about. The neutral emotion rating suggests a calm and objective tone, possibly reflecting a desire for understanding rather than strong feelings one way or another. The use of phrases like \"I guess\" and \"kind of\" may indicate a lack of certainty or confidence in their own thoughts or opinions."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_M001.wav",
+  "instruction": "What can be inferred from the spoken text and sounds? Why?",
+  "input": "I'm not sorry you came.",
+  "output": "The speaker is expressing a lack of remorse or regret about someone coming, possibly indicating a negative attitude towards them. This inference is based on the content of the speech and the tone conveyed through the speaker's words and facial expressions. The neutral emotional rating suggests that this sentiment may not necessarily be positive or negative but rather a matter-of-fact statement."
+ }
+]

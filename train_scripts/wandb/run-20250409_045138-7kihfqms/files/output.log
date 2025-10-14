@@ -1,0 +1,52 @@
+  0%|                                                                                                      | 0/35 [00:00<?, ?it/s]/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/root/ltu-main/ltu-main/src/ltu_as/train_scripts/../finetune_low_resource.py", line 285, in <module>
+    fire.Fire(train)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/fire/core.py", line 141, in Fire
+    component_trace = _Fire(component, args, parsed_flag_args, context, name)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/fire/core.py", line 475, in _Fire
+    component, remaining_args = _CallAndUpdateTrace(
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/fire/core.py", line 691, in _CallAndUpdateTrace
+    component = fn(*varargs, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/train_scripts/../finetune_low_resource.py", line 280, in train
+    trainer.train(resume_from_checkpoint=resume_from_checkpoint)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/trainer.py", line 1638, in train
+    return inner_training_loop(
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/trainer.py", line 1906, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/trainer.py", line 2652, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/trainer.py", line 2684, in compute_loss
+    outputs = model(**inputs)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/peft-main/src/peft/peft_model.py", line 483, in forward
+    return self.base_model(
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/models/llama/modeling_llama.py", line 868, in forward
+    outputs = self.model(
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/models/llama/modeling_llama.py", line 755, in forward
+    layer_outputs = decoder_layer(
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/models/llama/modeling_llama.py", line 446, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/hf-dev/transformers-main/src/transformers/models/llama/modeling_llama.py", line 347, in forward
+    query_states = self.q_proj(hidden_states).view(bsz, q_len, self.num_heads, self.head_dim).transpose(1, 2)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/ltu-main/ltu-main/src/ltu_as/peft-main/src/peft/tuners/lora.py", line 499, in forward
+    self.lora_A[self.active_adapter](self.lora_dropout[self.active_adapter](x))
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/modules/dropout.py", line 59, in forward
+    return F.dropout(input, self.p, self.training, self.inplace)
+  File "/root/anaconda3/envs/venv_ltu/lib/python3.10/site-packages/torch/nn/functional.py", line 1252, in dropout
+    return _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 39.44 GiB total capacity; 38.15 GiB already allocated; 4.12 MiB free; 38.15 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

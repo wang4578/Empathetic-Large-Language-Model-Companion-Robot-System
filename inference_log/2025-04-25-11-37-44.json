@@ -1,0 +1,20 @@
+[
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_F026.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Do you still feel that way?",
+  "output": "The speaker's tone suggests they may be feeling down or upset, so it would be important to acknowledge their feelings and offer support if possible. Asking them how they are doing could help open up a conversation about what is bothering them."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_M000.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Yeah, it kind of went out of style, didn't it?",
+  "output": "Yes, it seems like that was a popular trend at one point but has since faded away. It can be interesting to explore why certain things become popular or go out of fashion over time."
+ },
+ {
+  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_3_F010.wav",
+  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
+  "input": "Chris...",
+  "output": "The speaker's tone suggests a sense of longing or sadness, which aligns with their emotions."
+ }
+]
