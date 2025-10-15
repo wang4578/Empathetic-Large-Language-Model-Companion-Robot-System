@@ -1,8 +1,0 @@
-[
- {
-  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses05F_impro01_F002.wav",
-  "instruction": "What can be inferred from the spoken text and sounds? Why?",
-  "input": "registration? No, they told me, I'm sorry, but they told me to be in this line.",
-  "output": "From the spoken text and background sound of a phone ringing, it can be inferred that the speaker is trying to register for something or attend an event. The frustration expressed by the speaker indicates that they were not allowed to go directly to registration and had to wait in a long line instead. This scenario could happen when there are limited spaces available or specific rules need to be followed. The speaker's tone suggests that they feel annoyed or inconvenienced by the situation, which highlights their emotional response to the situation."
- }
-]

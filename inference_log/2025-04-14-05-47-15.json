@@ -1,8 +1,0 @@
-[
- {
-  "audio_id": "/tmp/gradio/08f3796023c847b2f3424239d5890eee80617a292b7ea77c90404b44c6641981/manbo.wav",
-  "instruction": "What can be inferred from the spoken text and sounds? Why?",
-  "input": "\u54e5\u6211\u6c42\u4f60\u4e86\u4e0d\u8981\u518d\u9488\u5bf9\u6211\u4e86\u6211\u73b0\u5b9e\u5c31\u4e00\u81ed\u5c4c\u4e1d\u6d51\u8eab\u6563\u53d1\u91ce\u84dd\u6c14\u606f\u6ca1\u6709\u793e\u4ea4\u6d3b\u52a8\u8bfb\u4e2a\u7834\u4e2d\u6b63\u6211\u5c31\u60f3\u5237\u4e2a\u6296\u97f3\u7f51\u6253\u5fae\u535a\u770b\u4e2a\u7ffb\u8bd1\u5e7b\u60f3\u56fe\u4e2a\u4e50\u5b50\u6211\u5c31\u662f\u4e2a\u4ec0\u4e48\u90fd\u6ca1\u6709\u7684\u5e9f\u7269\u5929\u5929\u5c31\u53d1\u5446\u770b\u5230\u4f60\u4eec\u8c08\u604b\u7231\u6211\u90fd\u5feb\u7fa1\u6155\u6b7b\u4e86\u56e0\u4e3a\u6211\u771f\u662f\u5c4c\u4e1d\u6211\u4e0d\u53ef\u80fd\u7b11\u7740\u8bf4\u6211\u662f\u5c4c\u4e1d\u6211\u5fc3\u7406\u6210\u719f\u80fd\u529b\u6ca1\u90a3\u4e48\u5f3a\u6211\u662f\u4e00\u6837\u7684\u6b7b\u5b85\u7537\u72d7\u770b\u89c1\u6211\u90fd\u6447\u5934\u4e5f\u7ed9\u6211\u8fd9\u79cd\u4eba\u4e00\u70b9\u751f\u5b58\u7a7a\u95f4\u5427",
-  "output": "From the background sound of a radio and the speech content, it can be inferred that the speaker is expressing their frustration towards someone who has hurt them. The use of metaphors like \"dead dog\" and \"empty room\" suggests a sense of isolation and despair. The mention of social media platforms like Weibo and TikTok implies a desire for connection and validation. Overall, this recording captures a moment of emotional vulnerability and longing for support."
- }
-]

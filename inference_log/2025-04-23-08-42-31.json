@@ -1,8 +1,0 @@
-[
- {
-  "audio_id": "/tmp/gradio/80299300109cef955e79b87aba987789be19d633d7997da31fa1e0276d26fb91/dia12_utt1.wav",
-  "instruction": "What can be inferred from the spoken text and sounds? Why?",
-  "input": "Hi. Hey. So, uh, Estelle lined up a bunch of auditions for me tomorrow, and I'll have my health insurance back in no time.",
-  "output": "It can be inferred that the speaker is excited about getting their health insurance back soon after mentioning it. The background sound of people talking suggests that they are likely in a social setting where they are sharing this news with others."
- }
-]

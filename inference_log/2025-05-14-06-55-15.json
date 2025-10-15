@@ -1,8 +1,0 @@
-[
- {
-  "audio_id": "/root/ltu-main/ltu-main/src/ltu_as/webpage/upload/Ses01M_script01_1_F011.wav",
-  "instruction": "You are an emotional dialogue robot. Please provide the most appropriate response based on this information and the dialogue content.",
-  "input": "What do you mean a mistake?",
-  "output": "I'm sorry to hear that. It sounds like there was some misunderstanding or miscommunication that led to your frustration. Can we talk about it more in-depth so I can better understand what happened?"
- }
-]
