@@ -1,5 +1,5 @@
 # 有温度的大语言模型共情机器人系统
-这是一个大学生大创项目：有温度的大语言模型共情机器人系统。我们基于[Whisper](https://github.com/openai/whisper), [LTU](https://github.com/YuanGongND/ltu), [coqui-ai TTS](https://github.com/coqui-ai/TTS)实现了一个语言-文本多模态大模型系统，并且基于VUE框架搭建了一个前端demo页面。
+这是一个大学生大创项目：有温度的大语言模型共情机器人系统。我们基于[Whisper](https://github.com/openai/whisper), [LTU](https://github.com/YuanGongND/ltu), [coqui-ai TTS](https://github.com/coqui-ai/TTS)实现了一个语言-文本多模态大模型系统，使用语言情感数据集对模型进行了Lora微调，增强了其共情能力，并且基于VUE框架搭建了一个前端demo页面。
 
 ## DEMO
 软件页面展示：
